@@ -50,8 +50,9 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int insertReplyNewArticle(Map articleMap) throws DataAccessException {
 		int articleNO = selectNewArticleNO();
+		System.out.println("articleNO : "+articleNO);
 		articleMap.put("articleNO", articleNO);
-		sqlSession.insert("mapper.board.insertRelyNewArticle",articleMap);
+		sqlSession.insert("mapper.board.insertReplyNewArticle",articleMap);
 		return articleNO;
 	}
     

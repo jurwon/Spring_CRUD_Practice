@@ -166,6 +166,8 @@ public class BoardControllerImpl implements BoardController {
 			String name = (String) enu.nextElement();
 			String value = multipartRequest.getParameter(name);
 			articleMap.put(name, value);
+			
+			System.out.println("name : "+name +",value : "+value);
 		}
 
 		List<String> fileList = multiUpload(multipartRequest);
@@ -173,7 +175,7 @@ public class BoardControllerImpl implements BoardController {
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		String id = memberVO.getId();
-
+		
 		List<ImageVO> imageFileList = new ArrayList<ImageVO>();
 		if (fileList != null && fileList.size() != 0) {
 			for (String fileName : fileList) {
@@ -186,6 +188,9 @@ public class BoardControllerImpl implements BoardController {
 
 		articleMap.put("parentNO", parentNO);
 		articleMap.put("id", id);
+		
+		System.out.println("parentNO : "+ parentNO);
+		System.out.println("id : "+ id);
 
 		String message;
 		ResponseEntity resEnt = null;

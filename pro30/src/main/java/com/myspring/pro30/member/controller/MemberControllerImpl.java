@@ -109,7 +109,7 @@ public class MemberControllerImpl implements MemberController {
 			// 이미지 파일 첨부 했다. 즉, 널도 아니고, 길이가 0도 아니다.
 			if (imageFileName != null && imageFileName.length() != 0) {
 				File srcFile = new File(CURR_IMAGE_REPO_PATH + "\\" + "thumbnail" + "\\" + imageFileName);
-				File destDir = new File(CURR_IMAGE_REPO_PATH + "\\" + imageFileName);
+				File destDir = new File(CURR_IMAGE_REPO_PATH + "\\");
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 
@@ -143,7 +143,7 @@ public class MemberControllerImpl implements MemberController {
 			String fileName = fileNames.next();
 			MultipartFile mFile = multipartRequest.getFile(fileName);
 			imageFileName = mFile.getOriginalFilename();
-			File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
+			File file = new File(CURR_IMAGE_REPO_PATH + "\\");
 			if (mFile.getSize() != 0) { 
 				if (!file.exists()) { 
 					if (file.getParentFile().mkdirs()) { 
